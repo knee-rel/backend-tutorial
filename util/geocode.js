@@ -1,9 +1,9 @@
 const axios = require('axios');
 const HttpError = require('../models/http-error');
 
-const NOMINATIM_BASE = process.env.NOMINATIM_BASE || 'https://nominatim.openstreetmap.org';
+const NOMINATIM_BASE = process.env.NOMINATIM_BASE
 
-const USER_AGENT = process.env.GEOCODER_USER_AGENT || 'ITMGT-45.03-Backend-Lab/1.0 (student@obf.ateneo.edu)';
+const USER_AGENT = process.env.GEOCODER_USER_AGENT
 
 async function getCoordsForAddress(address) {
   if (!address || !address.trim()) {
