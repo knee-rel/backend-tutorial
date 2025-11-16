@@ -58,7 +58,8 @@ const signup = async (req, res, next) => {
   const createdUser = new User({
     name,
     email,
-    image: "https://live.staticflickr.com/7631/26849088292_36fc52ee90_b.jpg",
+    image:
+      "https://img.freepik.com/free-vector/user-circles-set_78370-4704.jpg?semt=ais_incoming&w=740&q=80",
     password,
     places,
   });
@@ -66,8 +67,8 @@ const signup = async (req, res, next) => {
   try {
     await createdUser.save();
   } catch (err) {
-    console.error('--- SIGNUP FAILED ---', err);
-    
+    console.error("--- SIGNUP FAILED ---", err);
+
     const error = new HttpError("Signing up failed, please try again.", 500);
     return next(error);
   }
@@ -98,7 +99,11 @@ const login = async (req, res, next) => {
     return next(error);
   }
 
-  res.json({ message: "Logged in!" });
+  res.json({
+    message: "Logged in!",
+    userId: existingUser.id,
+    email: existingUser.email,
+  });
 };
 
 exports.getUsers = getUsers;
