@@ -135,6 +135,14 @@ const updatePlace = async (req, res, next) => {
     return next(error);
   }
 
+  if (!place) {
+    const error = new HttpError(
+      "Could not find a place for the provided id.",
+      404
+    );
+    return next(error);
+  }
+
   place.title = title;
   place.description = description;
 
@@ -161,6 +169,14 @@ const deletePlace = async (req, res, next) => {
     const error = new HttpError(
       "Something went wrong, could not delete place.",
       500
+    );
+    return next(error);
+  }
+
+  if (!place) {
+    const error = new HttpError(
+      "Could not find a place for the provided id.",
+      404
     );
     return next(error);
   }
